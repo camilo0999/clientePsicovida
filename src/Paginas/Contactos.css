@@ -1,0 +1,191 @@
+/* Estilos generales */
+.contactos-container {
+  font-family: "Arial", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #333;
+}
+
+/* Hero Section */
+.contactos-hero {
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  color: white;
+  padding: 80px 20px;
+  border-radius: 15px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.contactos-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.contactos-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Contact Methods */
+.contact-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.contact-form-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-form-container h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: #2980b9;
+}
+
+.other-methods {
+  flex: 1;
+  min-width: 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.contact-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.whatsapp-card {
+  cursor: pointer;
+  background: #f5f9f5;
+  border: 1px solid #25d366;
+}
+
+.contact-icon {
+  font-size: 2rem;
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+.whatsapp-card .contact-icon {
+  color: #25d366;
+}
+
+.contact-card h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.contact-card p {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.whatsapp-btn {
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #128c7e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contactos-hero {
+    padding: 60px 20px;
+  }
+
+  .contactos-hero h1 {
+    font-size: 2rem;
+  }
+
+  .contactos-hero p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .other-methods {
+    grid-template-columns: 1fr;
+  }
+}
