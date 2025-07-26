@@ -4,86 +4,137 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [servicesOpen, setServicesOpen] = React.useState(false);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [citasDropdownOpen, setCitasDropdownOpen] = React.useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleServices = () => {
-    setServicesOpen(!servicesOpen);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const toggleCitasDropdown = () => {
+    setCitasDropdownOpen(!citasDropdownOpen);
+  };
+
+  const closeAllDropdowns = () => {
+    setDropdownOpen(false);
+    setCitasDropdownOpen(false);
+    setIsOpen(false);
   };
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo */}
-        <Link to="/" className="navbar-logo">
-          PsicoVida
+        {/* Logo y nombre */}
+        <Link to="/" className="navbar-brand" onClick={closeAllDropdowns}>
+          <div className="logo-container">
+            <i className="fas fa-brain logo-icon"></i>
+            <span className="logo-text">PsicoVida</span>
+            <span className="logo-tagline">Salud Mental Integral</span>
+          </div>
         </Link>
 
         {/* Menú para móviles */}
-        <div className="menu-icon" onClick={toggleMenu}>
-          <div className={isOpen ? "bar1 change" : "bar1"}></div>
-          <div className={isOpen ? "bar2 change" : "bar2"}></div>
-          <div className={isOpen ? "bar3 change" : "bar3"}></div>
+        <div
+          className={`menu-icon ${isOpen ? "open" : ""}`}
+          onClick={toggleMenu}
+          aria-label="Menú"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
 
-        {/* Items del menú */}
-        <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
+        {/* Menú principal */}
+        <ul className={`nav-menu ${isOpen ? "active" : ""}`}>
           <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={toggleMenu}>
+            <Link to="/" className="nav-link" onClick={closeAllDropdowns}>
+              <i className="fas fa-home nav-icon"></i>
               Inicio
             </Link>
           </li>
+
           <li className="nav-item">
-            <Link to="/quienes" className="nav-links" onClick={toggleMenu}>
+            <Link
+              to="/quienes"
+              className="nav-link"
+              onClick={closeAllDropdowns}
+            >
+              <i className="fas fa-users nav-icon"></i>
               Quiénes Somos
             </Link>
           </li>
 
-          {/* Dropdown de Servicios */}
           <li className="nav-item dropdown">
-            <div className="nav-links dropdown-toggle" onClick={toggleServices}>
-              Servicios{" "}
+            <div
+              className="dropdown-toggle"
+              onClick={toggleCitasDropdown}
+              onMouseEnter={() => setCitasDropdownOpen(true)}
+            >
+              <i className="fas fa-calendar-check nav-icon"></i>
+              Citas
               <i
-                className={`fas fa-chevron-${servicesOpen ? "up" : "down"}`}
+                className={`fas ${
+                  citasDropdownOpen ? "fa-chevron-up" : "fa-chevron-down"
+                }`}
               ></i>
             </div>
-            <ul className={`dropdown-menu ${servicesOpen ? "show" : ""}`}>
-              <li className="dropdown-item">
+            <ul className={`dropdown-menu ${citasDropdownOpen ? "show" : ""}`}>
+              <li>
                 <Link
-                  to="/servicios/chat"
+                  to="/citas"
                   className="dropdown-link"
-                  onClick={() => {
-                    toggleMenu();
-                    setServicesOpen(false);
-                  }}
+                  onClick={closeAllDropdowns}
                 >
-                  <i className="fas fa-comments"></i> Servicio de Chat
+                  <i className="fas fa-plus-circle"></i> Nueva Cita
                 </Link>
               </li>
-              <li className="dropdown-item">
+              <li>
                 <Link
-                  to="/servicios/llamada"
+                  to="/consultar-cita"
                   className="dropdown-link"
-                  onClick={() => {
-                    toggleMenu();
-                    setServicesOpen(false);
-                  }}
+                  onClick={closeAllDropdowns}
                 >
-                  <i className="fas fa-phone-alt"></i> Servicio de Llamada
+                  <i className="fas fa-search"></i> Consultar Cita
                 </Link>
               </li>
             </ul>
           </li>
 
           <li className="nav-item">
-            <Link to="/contacto" className="nav-links" onClick={toggleMenu}>
+            <Link
+              to="/contacto"
+              className="nav-link"
+              onClick={closeAllDropdowns}
+            >
+              <i className="fas fa-envelope nav-icon"></i>
               Contacto
             </Link>
           </li>
         </ul>
+
+        {/* Acceso de usuario */}
+        <div className="user-section">
+          <div
+            className="user-dropdown"
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <button
+              className="user-toggle"
+              onClick={() =>
+                window.open("https://adminpsicovida.netlify.app/", "_blank")
+              }
+              onMouseEnter={() => setDropdownOpen(true)}
+              aria-label="Menú de usuario"
+            >
+              <i className="fas fa-user-circle user-icon"></i>
+              <span>Inicio de sesión</span>
+            </button>
+          </div>
+        </div>
       </div>
     </nav>
   );

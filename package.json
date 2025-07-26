@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:prod": "./scripts/build.sh",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:netlify": "npm run build && echo '✅ Build completado. Sube la carpeta dist a Netlify'"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^6.0.2"
