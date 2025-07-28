@@ -93,17 +93,6 @@ const Citas = () => {
     if (name === "documentoPaciente" && value && !/^[0-9]*$/.test(value))
       return;
     setForm((prev) => ({ ...prev, [name]: value }));
-
-    // Avanzar al siguiente paso cuando se completa un campo
-    if (name === "documentoPaciente" && value && activeStep === 1) {
-      setActiveStep(2);
-    } else if (name === "idDoctor" && value && activeStep === 2) {
-      setActiveStep(3);
-    } else if (name === "fecha" && value && activeStep === 3) {
-      setActiveStep(4);
-    } else if (name === "horaInicio" && value && activeStep === 4) {
-      setActiveStep(5);
-    }
   };
 
   const handleSubmit = async (e) => {
